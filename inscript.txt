@@ -1,0 +1,15 @@
+num_particle 1
+dimension 2
+step 10000000
+time step 0.002 500
+method verlet
+alpha 1.0
+beta 12.0
+gamma 1.0 1.0
+force simple
+LJ 1.0 1.0
+Shifted Gaussian 0.3 1.122 0.2
+Double Well 0.15 1.0
+Metadynamics none
+Bias 0.0 0.01 5000 2.0
+oriented_rc 1.0 0.0
