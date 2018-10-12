@@ -5,23 +5,24 @@
 using std::string;
 using std::cerr;
 
-file::file(string file_pos)
+file::file(string file_dir)
 {
-    inFile.open(file_pos);
-	inFile2.open(file_pos);
+    inFile_inscpt.open(file_dir);
+	inFile_config.open(file_dir);
 	
-	if(!inFile){
+	if(!inFile_inscpt){
 		cerr << "Unable to open file\n";
 		exit(1); // call system to stop.
 	}
-	while(getline(inFile, line)){
+	while(getline(inFile_inscpt, line)){
 		
 	    inscript.push_back(line);
+
 	}	
 }
 
 file::~file()
 {
-	inFile.close();
-	inFile2.close();
+	inFile_inscpt.close();
+	inFile_config.close();
 }

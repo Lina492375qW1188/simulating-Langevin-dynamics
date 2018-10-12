@@ -12,8 +12,8 @@ public:
 	~file();
 	std::vector<std::string> inscript;
 	std::string line;
-	std::ifstream inFile;
-	std::ifstream inFile2;
+	std::ifstream inFile_inscpt; // fstream object for input script.
+	std::ifstream inFile_config;   // fstream object for configuration file.
 
 };
 

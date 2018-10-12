@@ -134,10 +134,10 @@ void input::read_config()
 	int id = 0; // record of particle id.
 	for(int i=0; i<num_particle; i++){
 		for(int j=0; j<num_dim; j++){ // read the first {num_dim} values.
-	        g->inFile2 >> x[i+j+id];
+	        g->inFile_config >> x[i+j+id];
 		}
 		for(int j=0; j<num_dim; j++){ // read three values followed by the first {num_dim} values.
-			g->inFile2 >> v[i+j+id];
+			g->inFile_config >> v[i+j+id];
 		}
 		id += 1; // jump to next line of configuration file. each line corresponds to one id(particle).
 	}
