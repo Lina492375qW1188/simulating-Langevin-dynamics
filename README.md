@@ -5,3 +5,4 @@ To add one more dimension in z-direction:
 (1) Add fz in field object and force object.
 (2) Specify initial z positions and z velocities in configuration file.
 
+
