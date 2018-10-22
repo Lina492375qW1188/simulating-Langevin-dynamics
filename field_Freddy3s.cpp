@@ -107,7 +107,7 @@ double field::f_x(double xx, double yy, vector<double> x0_bias, vector<double> y
 	double coeff_x = _coeff_x;
 	double coeff_y = _coeff_y;
     
-	return -0.0006*(xx*xx*xx*xx*xx) - f_Gaussian(xx, A, 3.0, width)*pe_Gaussian(yy, A, 0.0, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.5, width) - f_Gaussian(xx, A, -2.5, width)*pe_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.5, width) + coeff_x*f_bias(xx, yy, h_bias, x0_bias, y0_bias, w_bias, delta_beta, h0_bias, coeff_x, coeff_y);
+	return -0.0006*(xx*xx*xx*xx*xx) - f_Gaussian(xx, A, 2.5, width)*pe_Gaussian(yy, A, 0.0, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.5, width) - f_Gaussian(xx, A, -2.5, width)*pe_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.5, width) + coeff_x*f_bias(xx, yy, h_bias, x0_bias, y0_bias, w_bias, delta_beta, h0_bias, coeff_x, coeff_y);
 	
 }
 
