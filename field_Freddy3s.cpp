@@ -44,7 +44,7 @@ double field::f_x(double xx, double yy)
 	double Alpha = 2.0/(5*M_PI);
 	double width = 1.0;
     
-	return -0.0006*(xx*xx*xx*xx*xx) - f_Gaussian(xx, A, 2.0, width)*pe_Gaussian(yy, A, 0.0, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.0, width) - f_Gaussian(xx, A, -2.0, width)*pe_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.0, width);
+	return -0.0006*(xx*xx*xx*xx*xx) - f_Gaussian(xx, A, 2.5, width)*pe_Gaussian(yy, A, 0.0, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.5, width) - f_Gaussian(xx, A, -2.5, width)*pe_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.5, width);
 }
 double field::f_x(double xx, double yy, vector<double> x0_bias)
 {
@@ -62,7 +62,7 @@ double field::f_x(double xx, double yy, vector<double> x0_bias)
 	double h_bias = _h_bias;
 	double w_bias = _w_bias;
 
-    return -0.0006*(xx*xx*xx*xx*xx) - f_Gaussian(xx, A, 2.0, width)*pe_Gaussian(yy, A, 0.0, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.0, width) - f_Gaussian(xx, A, -2.0, width)*pe_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.0, width) + f_bias(xx, h_bias, x0_bias, w_bias);
+    return -0.0006*(xx*xx*xx*xx*xx) - f_Gaussian(xx, A, 2.5, width)*pe_Gaussian(yy, A, 0.0, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.5, width) - f_Gaussian(xx, A, -2.5, width)*pe_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.5, width) + f_bias(xx, h_bias, x0_bias, w_bias);
 		
 }
 
@@ -83,7 +83,7 @@ double field::f_x(double xx, double yy, vector<double> x0_bias, vector<double> h
 	double w_bias = _w_bias;
 	double delta_beta = _delta_beta;
 
-	return -0.0006*(xx*xx*xx*xx*xx) - f_Gaussian(xx, A, 2.0, width)*pe_Gaussian(yy, A, 0.0, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.0, width) - f_Gaussian(xx, A, -2.0, width)*pe_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.0, width) + f_bias(xx, h_bias, x0_bias, w_bias, delta_beta, h0_bias);
+	return -0.0006*(xx*xx*xx*xx*xx) - f_Gaussian(xx, A, 2.5, width)*pe_Gaussian(yy, A, 0.0, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.5, width) - f_Gaussian(xx, A, -2.5, width)*pe_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.5, width) + f_bias(xx, h_bias, x0_bias, w_bias, delta_beta, h0_bias);
 			
 }
 
@@ -107,7 +107,7 @@ double field::f_x(double xx, double yy, vector<double> x0_bias, vector<double> y
 	double coeff_x = _coeff_x;
 	double coeff_y = _coeff_y;
     
-	return -0.0006*(xx*xx*xx*xx*xx) - f_Gaussian(xx, A, 2.0, width)*pe_Gaussian(yy, A, 0.0, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.0, width) - f_Gaussian(xx, A, -2.0, width)*pe_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.0, width) + coeff_x*f_bias(xx, yy, h_bias, x0_bias, y0_bias, w_bias, delta_beta, h0_bias, coeff_x, coeff_y);
+	return -0.0006*(xx*xx*xx*xx*xx) - f_Gaussian(xx, A, 2.5, width)*pe_Gaussian(yy, A, 0.0, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.5, width) - f_Gaussian(xx, A, -2.5, width)*pe_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.5, width) + coeff_x*f_bias(xx, yy, h_bias, x0_bias, y0_bias, w_bias, delta_beta, h0_bias, coeff_x, coeff_y);
 	
 }
 
@@ -121,7 +121,7 @@ double field::f_y(double xx, double yy)
 	double Alpha = 2.0/(5*M_PI);
 	double width = 1.0;
     
-	return -0.0006*(yy*yy*yy*yy*yy) - pe_Gaussian(xx, A, 2.0, width)*f_Gaussian(yy, A, 0.0, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.0, width)- pe_Gaussian(xx, A, -2.0, width)*f_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.0, width);
+	return -0.0006*(yy*yy*yy*yy*yy) - pe_Gaussian(xx, A, 2.5, width)*f_Gaussian(yy, A, 0.0, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.5, width)- pe_Gaussian(xx, A, -2.5, width)*f_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.5, width);
 }
 
 double field::f_y(double xx, double yy, vector<double> y0_bias)
@@ -137,7 +137,7 @@ double field::f_y(double xx, double yy, vector<double> y0_bias)
 	double h_bias = _h_bias;
 	double w_bias = _w_bias;
     
-    return -0.0006*(yy*yy*yy*yy*yy) - pe_Gaussian(xx, A, 2.0, width)*f_Gaussian(yy, A, 0.0, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.0, width)- pe_Gaussian(xx, A, -2.0, width)*f_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.0, width) + f_bias(yy, h_bias, y0_bias, w_bias);
+    return -0.0006*(yy*yy*yy*yy*yy) - pe_Gaussian(xx, A, 2.5, width)*f_Gaussian(yy, A, 0.0, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.5, width)- pe_Gaussian(xx, A, -2.5, width)*f_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.5, width) + f_bias(yy, h_bias, y0_bias, w_bias);
 	
 }
 
@@ -155,7 +155,7 @@ double field::f_y(double xx, double yy, vector<double> y0_bias, vector<double> h
 	double w_bias = _w_bias;
 	double delta_beta = _delta_beta;
 	
-    return -0.0006*(yy*yy*yy*yy*yy) - pe_Gaussian(xx, A, 2.0, width)*f_Gaussian(yy, A, 0.0, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.0, width)- pe_Gaussian(xx, A, -2.0, width)*f_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.0, width) + f_bias(yy, h_bias, y0_bias, w_bias, delta_beta, h0_bias);
+    return -0.0006*(yy*yy*yy*yy*yy) - pe_Gaussian(xx, A, 2.5, width)*f_Gaussian(yy, A, 0.0, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.5, width)- pe_Gaussian(xx, A, -2.5, width)*f_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.5, width) + f_bias(yy, h_bias, y0_bias, w_bias, delta_beta, h0_bias);
 	
 }
 
@@ -176,7 +176,7 @@ double field::f_y(double xx, double yy, vector<double> x0_bias, vector<double> y
 	double coeff_x = _coeff_x;
 	double coeff_y = _coeff_y;
 	
-    return -0.0006*(yy*yy*yy*yy*yy) - pe_Gaussian(xx, A, 2.0, width)*f_Gaussian(yy, A, 0.0, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.0, width)- pe_Gaussian(xx, A, -2.0, width)*f_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.0, width) + coeff_y*f_bias(xx, yy, h_bias, x0_bias, y0_bias, w_bias, delta_beta, h0_bias, coeff_x, coeff_y);
+    return -0.0006*(yy*yy*yy*yy*yy) - pe_Gaussian(xx, A, 2.5, width)*f_Gaussian(yy, A, 0.0, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.5, width)- pe_Gaussian(xx, A, -2.5, width)*f_Gaussian(yy, A, 0.0, width) - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, -2.5, width) + coeff_y*f_bias(xx, yy, h_bias, x0_bias, y0_bias, w_bias, delta_beta, h0_bias, coeff_x, coeff_y);
 	
 }
 
