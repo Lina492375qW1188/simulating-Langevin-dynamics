@@ -2,7 +2,7 @@
 #include <iostream>
 #include "field.hpp"
 #include "input.hpp"
-
+ 
 using std::vector;
 
 field::field()
