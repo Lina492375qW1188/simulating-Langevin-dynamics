@@ -40,9 +40,8 @@ force in x direction:
 double field::f_x(double xx, double yy)
 {
 	
-	double A = 1.0;
-	double Alpha = 2.0/(5*M_PI);
-	double width = 1.0;
+	double A = _A;
+	double width = _width;
     
 	return -0.0006*(xx*xx*xx*xx*xx) - f_Gaussian(xx, A, 2.0, width)*pe_Gaussian(yy, A, -1.155, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.309, width) - f_Gaussian(xx, A, -2.0, width)*pe_Gaussian(yy, A, -1.155, width);
 }
@@ -117,9 +116,9 @@ force in y direction:
 
 double field::f_y(double xx, double yy)
 {	
-	double A = 1.0;
-	double Alpha = 2.0/(5*M_PI);
-	double width = 1.0;
+	
+	double A = _A;
+	double width = _width;
     
 	return -0.0006*(yy*yy*yy*yy*yy) - pe_Gaussian(xx, A, 2.0, width)*f_Gaussian(yy, A, -1.155, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.309, width)- pe_Gaussian(xx, A, -2.0, width)*f_Gaussian(yy, A, -1.155, width);
 }
