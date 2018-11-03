@@ -43,7 +43,7 @@ double field::f_x(double xx, double yy)
 	double A = _A;
 	double width = _width;
     
-	return -0.0006*(xx*xx*xx*xx*xx) - f_Gaussian(xx, A, 2.0, width)*pe_Gaussian(yy, A, -1.155, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.309, width) - f_Gaussian(xx, A, -2.0, width)*pe_Gaussian(yy, A, -1.155, width);
+	return f_r4_x(xx, yy) - f_Gaussian(xx, A, 2.0, width)*pe_Gaussian(yy, A, -1.155, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.309, width) - f_Gaussian(xx, A, -2.0, width)*pe_Gaussian(yy, A, -1.155, width);
 }
 double field::f_x(double xx, double yy, vector<double> x0_bias)
 {
@@ -61,7 +61,7 @@ double field::f_x(double xx, double yy, vector<double> x0_bias)
 	double h_bias = _h_bias;
 	double w_bias = _w_bias;
 
-    return -0.0006*(xx*xx*xx*xx*xx) - f_Gaussian(xx, A, 2.0, width)*pe_Gaussian(yy, A, -1.155, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.309, width) - f_Gaussian(xx, A, -2.0, width)*pe_Gaussian(yy, A, -1.155, width) + f_bias(xx, h_bias, x0_bias, w_bias);
+    return f_r4_x(xx, yy) - f_Gaussian(xx, A, 2.0, width)*pe_Gaussian(yy, A, -1.155, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.309, width) - f_Gaussian(xx, A, -2.0, width)*pe_Gaussian(yy, A, -1.155, width) + f_bias(xx, h_bias, x0_bias, w_bias);
 		
 }
 
@@ -82,7 +82,7 @@ double field::f_x(double xx, double yy, vector<double> x0_bias, vector<double> h
 	double w_bias = _w_bias;
 	double delta_beta = _delta_beta;
 
-	return -0.0006*(xx*xx*xx*xx*xx) - f_Gaussian(xx, A, 2.0, width)*pe_Gaussian(yy, A, -1.155, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.309, width) - f_Gaussian(xx, A, -2.0, width)*pe_Gaussian(yy, A, -1.155, width) + f_bias(xx, h_bias, x0_bias, w_bias, delta_beta, h0_bias);
+	return f_r4_x(xx, yy) - f_Gaussian(xx, A, 2.0, width)*pe_Gaussian(yy, A, -1.155, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.309, width) - f_Gaussian(xx, A, -2.0, width)*pe_Gaussian(yy, A, -1.155, width) + f_bias(xx, h_bias, x0_bias, w_bias, delta_beta, h0_bias);
 			
 }
 
@@ -106,7 +106,7 @@ double field::f_x(double xx, double yy, vector<double> x0_bias, vector<double> y
 	double coeff_x = _coeff_x;
 	double coeff_y = _coeff_y;
     
-	return -0.0006*(xx*xx*xx*xx*xx) - f_Gaussian(xx, A, 2.0, width)*pe_Gaussian(yy, A, -1.155, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.309, width) - f_Gaussian(xx, A, -2.0, width)*pe_Gaussian(yy, A, -1.155, width) + coeff_x*f_bias(xx, yy, h_bias, x0_bias, y0_bias, w_bias, delta_beta, h0_bias, coeff_x, coeff_y);
+	return f_r4_x(xx, yy) - f_Gaussian(xx, A, 2.0, width)*pe_Gaussian(yy, A, -1.155, width)  - f_Gaussian(xx, A, 0.0, width)*pe_Gaussian(yy, A, 2.309, width) - f_Gaussian(xx, A, -2.0, width)*pe_Gaussian(yy, A, -1.155, width) + coeff_x*f_bias(xx, yy, h_bias, x0_bias, y0_bias, w_bias, delta_beta, h0_bias, coeff_x, coeff_y);
 	
 }
 
@@ -120,7 +120,7 @@ double field::f_y(double xx, double yy)
 	double A = _A;
 	double width = _width;
     
-	return -0.0006*(yy*yy*yy*yy*yy) - pe_Gaussian(xx, A, 2.0, width)*f_Gaussian(yy, A, -1.155, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.309, width)- pe_Gaussian(xx, A, -2.0, width)*f_Gaussian(yy, A, -1.155, width);
+	return f_r4_y(xx, yy) - pe_Gaussian(xx, A, 2.0, width)*f_Gaussian(yy, A, -1.155, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.309, width)- pe_Gaussian(xx, A, -2.0, width)*f_Gaussian(yy, A, -1.155, width);
 }
 
 double field::f_y(double xx, double yy, vector<double> y0_bias)
@@ -136,7 +136,7 @@ double field::f_y(double xx, double yy, vector<double> y0_bias)
 	double h_bias = _h_bias;
 	double w_bias = _w_bias;
     
-    return -0.0006*(yy*yy*yy*yy*yy) - pe_Gaussian(xx, A, 2.0, width)*f_Gaussian(yy, A, -1.155, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.309, width)- pe_Gaussian(xx, A, -2.0, width)*f_Gaussian(yy, A, -1.155, width) + f_bias(yy, h_bias, y0_bias, w_bias);
+    return f_r4_y(xx, yy) - pe_Gaussian(xx, A, 2.0, width)*f_Gaussian(yy, A, -1.155, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.309, width)- pe_Gaussian(xx, A, -2.0, width)*f_Gaussian(yy, A, -1.155, width) + f_bias(yy, h_bias, y0_bias, w_bias);
 	
 }
 
@@ -154,7 +154,7 @@ double field::f_y(double xx, double yy, vector<double> y0_bias, vector<double> h
 	double w_bias = _w_bias;
 	double delta_beta = _delta_beta;
 	
-    return -0.0006*(yy*yy*yy*yy*yy) - pe_Gaussian(xx, A, 2.0, width)*f_Gaussian(yy, A, -1.155, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.309, width)- pe_Gaussian(xx, A, -2.0, width)*f_Gaussian(yy, A, -1.155, width) + f_bias(yy, h_bias, y0_bias, w_bias, delta_beta, h0_bias);
+    return f_r4_y(xx, yy) - pe_Gaussian(xx, A, 2.0, width)*f_Gaussian(yy, A, -1.155, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.309, width)- pe_Gaussian(xx, A, -2.0, width)*f_Gaussian(yy, A, -1.155, width) + f_bias(yy, h_bias, y0_bias, w_bias, delta_beta, h0_bias);
 	
 }
 
@@ -175,7 +175,7 @@ double field::f_y(double xx, double yy, vector<double> x0_bias, vector<double> y
 	double coeff_x = _coeff_x;
 	double coeff_y = _coeff_y;
 	
-    return -0.0006*(yy*yy*yy*yy*yy) - pe_Gaussian(xx, A, 2.0, width)*f_Gaussian(yy, A, -1.155, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.309, width)- pe_Gaussian(xx, A, -2.0, width)*f_Gaussian(yy, A, -1.155, width) + coeff_y*f_bias(xx, yy, h_bias, x0_bias, y0_bias, w_bias, delta_beta, h0_bias, coeff_x, coeff_y);
+    return f_r4_y(xx, yy) - pe_Gaussian(xx, A, 2.0, width)*f_Gaussian(yy, A, -1.155, width) - pe_Gaussian(xx, A, 0.0, width)*f_Gaussian(yy, A, 2.309, width)- pe_Gaussian(xx, A, -2.0, width)*f_Gaussian(yy, A, -1.155, width) + coeff_y*f_bias(xx, yy, h_bias, x0_bias, y0_bias, w_bias, delta_beta, h0_bias, coeff_x, coeff_y);
 	
 }
 
@@ -312,4 +312,30 @@ double field::pe_Gaussian(double xx, double A, double x0, double w)
 	double sqr_d_xx = d_xx*d_xx;
 	double sqr_ww = w*w;
 	return A*exp(-0.5*sqr_d_xx/sqr_ww);
+}
+
+//Circular force in x-direction:
+double field::f_r4_x(double xx, double yy)
+{
+	double A = 0.001;
+	double sqr_x = xx*xx;
+	double sqr_y = yy*yy;
+    return -4*A*xx*(sqr_x+sqr_y);
+}
+//Circular force in y-direction:
+double field::f_r4_y(double xx, double yy)
+{
+	double A = 0.001;
+	double sqr_x = xx*xx;
+	double sqr_y = yy*yy;
+    return -4*A*yy*(sqr_x+sqr_y);
+}
+
+//Circular potential:
+double field::pe_r4(double xx, double yy)
+{
+	double A = 0.001;
+	double sqr_x = xx*xx;
+	double sqr_y = yy*yy;
+    return A*(sqr_x+sqr_y)*(sqr_x+sqr_y);
 }
