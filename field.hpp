@@ -21,7 +21,7 @@ public:
 	double f_y(double, double);
 	double f_y(double, double, std::vector<double>);
 	double f_y(double, double, std::vector<double>, std::vector<double>);
-	double f_y(double xx, double yy, std::vector<double>, std::vector<double>, std::vector<double>);
+	double f_y(double, double, std::vector<double>, std::vector<double>, std::vector<double>);
 
 	double h_bias_wt(double, std::vector<double>, std::vector<double>);
 	
