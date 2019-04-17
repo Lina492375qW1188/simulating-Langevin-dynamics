@@ -4,7 +4,9 @@ This is a demonstration of the molecular dynamics simulation of single/nonintera
 The algorithm is based on the verlet algorithm proposed in the paper "Accurate sampling using Langevin dynamics", Giovanni Bussi and Michele Parrinello, Phys. Rev. E 75, 056707 (2007).
 
 To add one more dimension in z-direction:
-(1) Add fz in field object and force object.
-(2) Specify initial z positions and z velocities in configuration file.
-
-
+(1) Add f[2] in force.cpp. 
+(2) All f_x, f_y, and f_z in force.cpp need to have three arguments: qq1->x[0], qq1->x[1], qq1->x[2]
+(3) Add new definitions of fx, fy, and fz (with three double-type inputs) in field.hpp
+(4) Modify f_x and f_y settings in field.cpp. Add settings for f_z in field.cpp
+(5) In insript.txt, dimension=3
+(6) Specify initial z positions and z velocities in configuration file.
