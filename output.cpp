@@ -36,7 +36,7 @@ output::output()
 	B = roundstr(_inp->B);
 	a = roundstr(_inp->a, 1);
     x0 = roundstr(_inp->x0, 3);
-    width = roundstr(_inp->width, 1);
+    width = roundstr(_inp->width);
 	
 	string Environment = "_h"+h;
 	string Verlet = "beta"+beta+"gammax"+gamma_x+"gammay"+gamma_y;
@@ -64,8 +64,15 @@ output::~output()
 void output::header(vector<particle*> qq, verlet *ver){
 	
 	for(int i=0; i<num_particle; i++){
-	    myfile[i] << "x v y w r1 r2 h_bias_wt x0_bias_vec y0_bias_vec" << endl;
-	    myfile[i] << qq[i]->x[0] << " " << qq[i]->v[0] << " " << qq[i]->x[1] << " " << qq[i]->v[1] << " " << ver->r1 << " " << ver->r2 << " " << ver->h0_bias_vec.at(i).back() << " " << ver->x0_bias_vec.at(i).back() << " " << ver->y0_bias_vec.at(i).back() << endl;
+		for(int j=0; j<qq[i]->num_dim; j++) myfile[i] << "x_" << j+1 << " ";
+		for(int j=0; j<qq[i]->num_dim; j++) myfile[i] << "v_" << j+1 << " ";
+
+	    myfile[i] << "r1 r2 height x0_bias y0_bias" << endl;
+		for(int j=0; j<qq[i]->num_dim; j++) myfile[i] << qq[i]->x[j] << " ";
+		for(int j=0; j<qq[i]->num_dim; j++) myfile[i] << qq[i]->v[j] << " ";
+		myfile[i] << ver->r1 << " " << ver->r2 << " ";
+		myfile[i] << ver->h0_bias_vec.at(i).back() << " ";
+		myfile[i] << ver->x0_bias_vec.at(i).back() << " " << ver->y0_bias_vec.at(i).back() << endl;
 	}
 	
 }
@@ -74,7 +81,13 @@ void output::update(vector<particle*> qq, verlet* ver){
 	
 	/* Stop writing while particle is across barrier: */
 	for(int i=0; i<num_particle; i++){
-		if(qq[i]->flag == 1) myfile[i] << qq[i]->x[0] << " " << qq[i]->v[0] << " " << qq[i]->x[1] << " " << qq[i]->v[1] << " " << ver->r1 << " " << ver->r2 << " " << ver->h0_bias_vec.at(i).back() << " " << ver->x0_bias_vec.at(i).back() << " " << ver->y0_bias_vec.at(i).back() << endl;
+		if(qq[i]->flag == 1){
+			for(int j=0; j<qq[i]->num_dim; j++) myfile[i] << qq[i]->x[j] << " ";
+	    	for(int j=0; j<qq[i]->num_dim; j++) myfile[i] << qq[i]->v[j] << " ";
+		    myfile[i] << ver->r1 << " " << ver->r2 << " ";
+		    myfile[i] << ver->h0_bias_vec.at(i).back() << " ";
+		    myfile[i] << ver->x0_bias_vec.at(i).back() << " " << ver->y0_bias_vec.at(i).back() << endl;
+		}
 	}
 	
 }
