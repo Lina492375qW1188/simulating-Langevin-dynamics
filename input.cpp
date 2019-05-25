@@ -42,7 +42,7 @@ input::input()
 	alpha = para_d;
 	para_d = read_para<double>(f->inscript[6], "beta", 1);
 	beta = para_d[0];
-	para_d = read_para<double>(f->inscript[7], "gamma", 2);
+	para_d = read_para<double>(f->inscript[7], "gamma", num_dim);
 	gamma_x = para_d;
 	
 	// Force:
