@@ -1,11 +1,11 @@
 # SINGLE_MD
-This is a demonstration of the molecular dynamics simulation of single/noninteracting particle based on Verlet algorithm, in which more than one noninteracting particle is possible. It was designed for Tiwary's group at University of Maryland since 2017, in order to study the dynamics and exploration of stochastic movement in configuration space.
+This is a demonstration of the molecular dynamics simulation of single/noninteracting particle based on Verlet algorithm, in which more than one noninteracting particle is possible. It was designed for Tiwary's group at University of Maryland since 2017, in order to study the dynamics and exploration of stochastic movement in configuration space. 
 
 The algorithm is based on the verlet algorithm proposed in the paper "Accurate sampling using Langevin dynamics", Giovanni Bussi and Michele Parrinello, Phys. Rev. E 75, 056707 (2007).
 
 To add one more dimension in z-direction:
 
-(1) Add f[2] in force.cpp.
+(1) Add f[2] in force.cpp. 
 
 (2) All f_x, f_y, and f_z in force.cpp need to have three arguments: qq1->x[0], qq1->x[1], qq1->x[2]
 
@@ -13,6 +13,8 @@ To add one more dimension in z-direction:
 
 (4) Modify f_x and f_y settings in field.cpp. Add settings for f_z in field.cpp
 
-(5) In insript.txt, dimension=3, add one more value for gamma in z-direction.
+(5) In insript.txt, dimension=3
+
+(6) Specify initial z positions and z velocities in configuration file.
 
 (6) Specify initial z positions and z velocities in configuration file.
