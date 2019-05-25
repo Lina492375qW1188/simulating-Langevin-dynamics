@@ -13,7 +13,7 @@ To add one more dimension in z-direction:
 
 (4) Modify f_x and f_y settings in field.cpp. Add settings for f_z in field.cpp
 
-(5) In insript.txt, dimension=3
+(5) In insript.txt, dimension=3. Add one more number for gamma along z-dimension.
 
 (6) Specify initial z positions and z velocities in configuration file.
 
