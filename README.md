@@ -18,3 +18,9 @@ To add one more dimension in z-direction:
 (6) Specify initial z positions and z velocities in configuration file.
 
 (6) Specify initial z positions and z velocities in configuration file.
+
+
+To perform calculation, 
+(1) sh compile.sh produce executable file mdt.out
+(2) ./mdt.out to perform simulation.
+(tested on mac os)
