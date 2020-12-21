@@ -36,6 +36,7 @@ public:
 	double pe_LJ(double, double, double);
 	double pe_DW(double, double, double);
 	double pe_Gaussian(double, double, double, double);
+	double pe_r4(double, double);
 	
 private:
 	
@@ -60,6 +61,8 @@ private:
 	double f_LJ(double, double, double);
 	double f_DW(double, double, double);
 	double f_Gaussian(double, double, double, double);
+	double f_r4_x(double, double);
+	double f_r4_y(double, double);
 	
     input *_inp;
 
