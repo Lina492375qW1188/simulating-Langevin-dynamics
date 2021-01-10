@@ -21,9 +21,8 @@ To add one more dimension in z-direction:
 
 
 # How to use
-
-(1) sh compile.sh produce executable file mdt.out
-
-(2) ./mdt.out to perform simulation.
-
+```
+sh compile.sh  // produce executable file mdt.out
+./mdt.out      // perform simulation.
+```
 (tested on mac os)
