@@ -1,0 +1,85 @@
+\documentclass[10pt]{article}
+\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={210mm,297mm},
+ left=20mm,
+ right=20mm,
+ top=15mm,
+ bottom=15mm,
+ }
+
+
+\begin{document}
+\noindent Considering a simpler Langevin dynamics under the foloowing equations
+\begin{align*}
+  \begin{cases}
+    \dot{x}&=v \\
+    \dot{v}&=\frac{F(x)}{m}-\gamma v+\frac{\xi(t)}{m}
+  \end{cases}
+\end{align*}
+where $(x,v)$ are position and velocity. $F(x)=-\partial_x U(x)$ which is the position-dependent force. The $m$, $\gamma$ are mass and friction coefficient. The $\xi(t)$ represents randomness defines the Wiener noise in the Ito convention:
+\begin{align*}
+\langle\xi(t)\xi(t')\rangle=\frac{2m\gamma}{\beta}\langle dW_tdW_{t'}\rangle=\frac{2m\gamma}{\beta}\delta(t-t')
+\end{align*}
+This equation describes a dynamics equivalent to an evolution of probability density f(x,v;t) through Fokker-Planck equation:
+\begin{align*}
+\frac{\partial f(x,v;t)}{\partial t}=-\hat{L}f(x,v;t)
+\end{align*}
+where
+\begin{align*}
+\hat{L}\equiv\frac{F(x)}{m}\frac{\partial}{\partial v}+v\frac{\partial}{\partial x}-\gamma\left(\frac{\partial}{\partial v}v+\frac{1}{m\beta}\frac{\partial^2}{\partial v^2}\right)
+\end{align*}
+The probabaility density f evolves through
+\begin{align*}
+f(x,v, t+\Delta t)=e^{-\Delta t\hat{L}}f(x,v;t)
+\end{align*}
+The operator $\hat{L}$ is separated into three parts, and the interation is approximated through Lie-Trotter formula,
+\begin{align*}
+e^{-\Delta t\hat{L}}&\approx e^{-\Delta t\hat{L}_x}e^{-\Delta t\hat{L}_v}e^{-\Delta t\hat{L}_{\gamma}} \\
+&\approx e^{-(\Delta t/2)\hat{L}_{\gamma}}e^{-(\Delta t/2)\hat{L}_v}e^{-(\Delta t/2)\hat{L}_x}e^{-(\Delta t/2)\hat{L}_x}e^{-(\Delta t/2)\hat{L}_v}e^{-(\Delta t/2)\hat{L}_{\gamma}}
+\end{align*}
+where
+\begin{align*}
+\hat{L}_x&=v\frac{\partial}{\partial x} \\
+\hat{L}_v&=\frac{F(x)}{m}\frac{\partial}{\partial v} \\
+\hat{L}_{\gamma}&=-\gamma\left(\frac{\partial}{\partial v}v+\frac{1}{m\beta}\frac{\partial^2}{\partial v^2}\right)
+\end{align*}
+The integration can then be taken into two parts.
+\subsubsection*{I. $\hat{L}_{\gamma}$ - Diffusion in momentum space}
+This first part is a diffusion in momentum space
+\begin{align*}
+f(v^{+}\equiv v(t^{+}), t^{+})=e^{-(\Delta t/2)\hat{L}_{\gamma}}f(v,t)
+\end{align*}
+which corresponds to the evolution of $f$
+\begin{align*}
+\frac{\partial f}{\partial t}=-\frac{\hat{L}_{\gamma}}{2}f=\frac{\gamma}{2}\left[\frac{\partial }{\partial v}(vf)+\frac{1}{m\beta}\frac{\partial^2 f}{\partial v^2}\right]
+\end{align*}
+which has a solution [``The Fokker-Planck Equation Second Edition", H. Risken] of
+\begin{align*}
+f(v^{+}, t^{+}|v,t)\propto\exp\left[-\frac{m\beta}{2} \frac{\left(v^{+}-v e^{-\frac{\gamma}{2}\Delta t}\right)^2}{1-e^{-\gamma\Delta t}} \right]=\exp\left[ -\frac{1}{2}\left(\frac{v^{+}-\mu_v}{\sigma_v}\right)^2 \right]
+\end{align*}
+This step can then be performed by sampling from a Normal distribution $N(\mu_v, \sigma_v)$,
+\begin{align*}
+v(t^{+})&\sim N(\mu_v, \sigma_v) \\
+&=\mu_v+\sigma_v N(0,1) \\
+&=v(t)e^{-\frac{\gamma}{2}\Delta t}+\sqrt{ \frac{1}{m\beta}\left(1-e^{-\gamma\Delta t}\right) } N(0,1) \\
+&=c_1 v(t)+c_2 N(0,1)
+\end{align*}
+\subsubsection*{I. $(\hat{L}_x, \hat{L}_v)$ - Deterministic canonical transformation in phase space}
+Both $\hat{L}_v$ and $\hat{L}_x$ are deterministic canonical transformation in phase space.  Applying $f(v',t')=f(v(t+\Delta t), t+\Delta t)=e^{-(\Delta t/2)\hat{L}_v}f(v(t),t)$, and observing that by doing the transformation $p=t+\frac{F(x)}{2m}v$ and $q=\frac{F(x)}{2m}t-v$, we have
+\begin{align*}
+\frac{\partial f}{\partial t}+\frac{F(x)}{2m}\frac{\partial f}{\partial v}=\left[1+\left(\frac{F(x)}{2m}\right)^2\right] \left.\frac{\partial f}{\partial p}\right|_q=0
+\end{align*}
+The solution is then $f(v,t)=f(q)=f(\frac{F(x)}{2m}t-v)$. With the boundary condition $v(0)=v$, the solution must be a delta function
+\begin{align*}
+f(v,t)&=f(\frac{F(x)}{2m}t-v)=\delta(\frac{F(x)}{2m}t-v) \\
+\Delta v&=\frac{F(x)}{2m}\Delta t
+\end{align*}
+Similarly, the operation of $\hat{L}_x$ during $\Delta t/2$ is equivalent to $\Delta x=v(\Delta t/2)$.
+\end{document}
