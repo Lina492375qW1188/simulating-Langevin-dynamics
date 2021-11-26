@@ -1,4 +1,4 @@
-# README
+# simulating-Langevin-dynamics
 This is a demonstration of simulation of Langevin dynamics based on Verlet algorithm. It was designed for Tiwary's research group at University of Maryland since 2017, in order to study the dynamics and exploration of stochastic movement in configuration space. 
 
 The algorithm is based on the verlet algorithm proposed in the paper "Accurate sampling using Langevin dynamics", Giovanni Bussi and Michele Parrinello, Phys. Rev. E 75, 056707 (2007).
