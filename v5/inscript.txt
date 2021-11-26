@@ -1,0 +1,15 @@
+num_particle 3
+dimension 2
+step 2000000
+time step 0.01 100
+method verlet
+alpha 1.0
+beta 6.0
+gamma 1.0 1.0
+force simple
+LJ 1.0 1.0
+Shifted Gaussian 1.0 1.122 0.5
+Double Well 0.15 1.0
+Metadynamics well-tempered oriented rc
+Bias 0.0 0.3 1000 2.0
+oriented_rc 1.0 0.0

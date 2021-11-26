@@ -1,0 +1,39 @@
+May 1st, 2018, author: Sun-Ting Tsai (ST)
+
+v3 -- version3
+
+(After resolving the problem of compilation version on blue crab, src_laptop, src_dt2, and src_bluecrab are no longer different. As a result, the source code has been combined and separated to two different version: v2 and v3.) 
+
+This version involves a new method called metadynamics, which contains a declaration of vector of vector storing a list of bias positions. This list is updated at every  j_bias simulation time.
+
+Difference from v2 (without meta dynamics):
+integrate.hpp/cpp
+verlet.hpp/cpp
+input.hpp/cpp
+force.hpp/cpp
+field.hpp/cpp
+
+Output standard:
+Precision of all parameters is set to be 1 except x0 and B.
+In a very old version, there may be no gammay output.
+
+v4 -- version4
+
+In this version, the well-tempred metadynamics is implemented. A potential problem of random variables is resolved by making them static. A new variable delta_beta has been added.
+
+Well-tempered metadynamics
+verlet.hpp/cpp
+input.hpp/cpp
+field.hpp/cpp
+
+# If not making r1 and r2 static, newly added variable delta_beta may change them. The other solutions are adding cout << delta_beta << endl; in input.cpp or integrate.cpp.
+
+v5 -- version5
+
+Output format has been eterenally changed. All positions are put before velocities.
+
+v6 -- version6
+
+The input style has been changed. LJ, Shifted Gaussian, and Double well have been replaced by
+Potential_A, Potential_B, and Potential_C. Their corresponding parameters are (A1, A2), (B1,B2,B3), (C1,C2).
+The output file name has also changed and print without including the parameters of potential.

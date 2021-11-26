@@ -1,0 +1,16 @@
+num_particle 1
+dimension 2
+step 500000
+time step 0.01 100
+method verlet
+alpha 1.0
+beta 2.5
+gamma 1.0 1.0
+force simple
+Potential_A 1.0 1.0
+Potential_B 1.0 0.0 0.8
+Potential_C 1.0 0.5
+Metadynamics well-tempered oriented rc
+Bias 1.0 0.1 100 0.5
+oriented_rc 1.0 0.0
+
