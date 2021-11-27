@@ -7,12 +7,13 @@ The algorithm is based on the verlet algorithm proposed in the paper "Accurate s
 `./v6/`
 
 # How to use
-
+```
 (1) sh compile.sh produce executable file mdt.out
 
 (2) ./mdt.out to perform simulation.
 
 (tested on mac os)
+```
 
 # More dimensions
 It is possible to add more dimension while not supported and implemented in this version. To add one more dimension in z-direction at least the following steps need to be done.
